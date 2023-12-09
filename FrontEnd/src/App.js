@@ -39,11 +39,11 @@ function App() {
 
   const fetchData = async () => {
 
-   
+    const url = process.env.REACT_APP_URL + prompt;
     const imgs =[Spinner,Spinner,Spinner];
     for(let i=0;i<3;i++){
     try {
-      const response = await fetch(`https://genai-mccq.onrender.com/api/text2image?prompt=${prompt}`,{
+      const response = await fetch(url,{
       });
       const result = await response.json();
       setData(result);
