@@ -18,8 +18,7 @@ img:hover{
   border: 0;
   border-radius: 0;
   cursor:zoom-out;
-  height: auto;
-}
+ }
 
 main {
   display: flex;
@@ -30,7 +29,7 @@ main {
   letter-spacing: 7px;
   gap: 3%;
   width: 100%;
-  height: max-content !important;
+  height: max-content;
   min-height: 100%;
   background: linear-gradient(to bottom, #2ecc71, #3498db);
   -webkit-background-size: cover;
@@ -119,7 +118,7 @@ border: rgba(255, 255, 255, 0.349) solid 2px;
 border-radius: 20px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px ){
 
   h1{
     font-size:5em;
@@ -148,7 +147,7 @@ border-radius: 20px;
 
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 480px){
 
   h1{
     font-size:4em;
@@ -173,6 +172,21 @@ border-radius: 20px;
   .view{
     width: 60%;
     left: 20%;
+  }
+
+}
+
+
+@media only screen and (max-height: 480px){
+
+  h1{
+    font-size:4.5em;
+  }
+
+  .view{
+    width: 50%;
+    left: 25%;
+    top: 5ch;
   }
 
 }
