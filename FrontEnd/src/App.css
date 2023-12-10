@@ -180,13 +180,13 @@ border-radius: 20px;
 @media only screen and (max-height: 480px){
 
   h1{
-    font-size:4.5em;
+    font-size:4.5em !important;
   }
 
   .view{
-    width: 50%;
-    left: 25%;
-    top: 5ch;
+    width: 46% !important;
+    left: 25% !important;
+    top: 5ch !important;
   }
 
 }
