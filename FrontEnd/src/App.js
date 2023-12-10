@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Spinner from "./Spinner-1s.svg";
 
-
 function App() {
 
   const [data, setData] = useState(null);
@@ -12,6 +11,7 @@ function App() {
   const [isDisabled, setButton] = useState(false);  
   const [viewObj, setObj] = useState("");
   const [bodyStyle, setStyle] = useState({});
+  const [imgStyle, setImgStyle] = useState({});
 
   function disableButton(){
 
@@ -33,11 +33,11 @@ function App() {
   async function handleClick(event){
     disableButton();
     setObj("");
+    setImgStyle({});
     event.preventDefault();
     setData(Spinner);
     setImages([Spinner,Spinner,Spinner]);
     fetchData();
-    
   }
 
   const fetchData = async () => {
@@ -52,6 +52,7 @@ function App() {
       setData(result);
       imgs[i]=result;
       setImages(imgs);
+      setImgStyle({cursor:"zoom-in"});
     } catch (error) {
       console.error('Error fetching data:', error.message);
       setImages([]);
@@ -79,7 +80,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div onClick={() => viewObj!="" && closeView()} className="app">
     <link href="https://fonts.cdnfonts.com/css/crazy-robot" rel="stylesheet"></link>
      <main style={bodyStyle}>
      <h1>Genai</h1>
@@ -89,7 +90,7 @@ function App() {
     <div className='imgs'>
     {images.map(e=>{
 
-      return <element onClick={ () => e!=Spinner && view(e)}><img src={e}></img></element>
+      return <element style={imgStyle} onClick={ () => e!=Spinner && view(e)}><img src={e}></img></element>
       
     })}
 

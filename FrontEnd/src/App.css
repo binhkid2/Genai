@@ -1,7 +1,6 @@
 img{
 
 filter: brightness(80%);
-cursor:zoom-in;
 }
 
 img:hover{
@@ -19,6 +18,7 @@ img:hover{
   border: 0;
   border-radius: 0;
   cursor:zoom-out;
+  height: auto;
 }
 
 main {
@@ -171,7 +171,7 @@ border-radius: 20px;
     width: 90%;
   }
   .view{
-    width: 40%;
+    width: 60%;
     left: 20%;
   }
 
