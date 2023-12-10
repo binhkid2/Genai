@@ -1,11 +1,24 @@
 img{
 
 filter: brightness(80%);
+cursor:zoom-in;
 }
 
 img:hover{
 
   filter: brightness(100%);
+}
+
+.view{
+
+  position: relative;
+  width: 40%;
+  top: 6ch;
+  left: 30%;
+  filter: brightness(100%);
+  border: 0;
+  border-radius: 0;
+  cursor:zoom-out;
 }
 
 main {
@@ -128,6 +141,10 @@ border-radius: 20px;
     gap: 3ch;
     width: 90%;
   }
+  .view{
+    width: 60%;
+    left: 20%;
+  }
 
 }
 
@@ -152,6 +169,10 @@ border-radius: 20px;
     grid-template-columns: repeat(3,1fr);
     gap: 3ch;
     width: 90%;
+  }
+  .view{
+    width: 40%;
+    left: 10%;
   }
 
 }

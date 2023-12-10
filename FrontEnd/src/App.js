@@ -10,6 +10,8 @@ function App() {
   const [prompt, setPrompt] = useState(null);
   const [images, setImages] = useState([]);
   const [isDisabled, setButton] = useState(false);  
+  const [viewObj, setObj] = useState("");
+  const [bodyStyle, setStyle] = useState({});
 
   function disableButton(){
 
@@ -30,6 +32,7 @@ function App() {
 
   async function handleClick(event){
     disableButton();
+    setObj("");
     event.preventDefault();
     setData(Spinner);
     setImages([Spinner,Spinner,Spinner]);
@@ -58,27 +61,41 @@ function App() {
   enableButton(); 
   };
 
+  function closeView(){
+
+    setStyle({});
+    setObj("");
+  }
+
+  function view(url){
+
+    if(viewObj==""){
+    setStyle({filter: "blur(8px)"});  
+    setObj(<element onClick={() => closeView()} ><img className='view' src={url}></img></element>);
+    
+  }
+    else {setStyle({}); setObj("");}
+
+  }
 
   return (
     <div className="app">
     <link href="https://fonts.cdnfonts.com/css/crazy-robot" rel="stylesheet"></link>
-     <main>
+     <main style={bodyStyle}>
      <h1>Genai</h1>
       <form>
       <input onChange={handleChange} placeholder='Type Description' value={input}></input>
       <button onClick={handleClick} type='submit' disabled={isDisabled}>generate</button></form>
     <div className='imgs'>
-
     {images.map(e=>{
 
-      return <a href={e !=Spinner && e } target = "_blank" rel = "noopener noreferrer"><img src={e}></img></a>
-
+      return <element onClick={ () => e!=Spinner && view(e)}><img src={e}></img></element>
+      
     })}
-        
-    </div>
 
-    <div className='input'></div>
+    </div>
     </main>
+    {viewObj}
     </div>
   );
 }
