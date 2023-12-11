@@ -36,30 +36,54 @@ function App() {
     setImgStyle({});
     event.preventDefault();
     setData(Spinner);
-    setImages([Spinner,Spinner,Spinner]);
+    setImages([Spinner,Spinner,Spinner,Spinner,Spinner,Spinner]);
     fetchData();
   }
 
   const fetchData = async () => {
 
     const url = process.env.REACT_APP_URL + prompt;
-    const imgs =[Spinner,Spinner,Spinner];
-    for(let i=0;i<3;i++){
-    try {
-      const response = await fetch(url,{
-      });
-      const result = await response.json();
-      setData(result);
-      imgs[i]=result;
-      setImages(imgs);
-      setImgStyle({cursor:"zoom-in"});
-    } catch (error) {
-      console.error('Error fetching data:', error.message);
-      setImages([]);
-      break;
-    }
-  }
-  enableButton(); 
+    const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
+    const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
+    let limitCounter = 0;
+
+    for(let i=0;i<6;i++){
+      
+        const response = await fetch(url,{
+        });
+        const result = await response.json();
+        imgsProdia[i]=result;
+      }
+        
+      let ready = false;
+
+        while(!ready){
+
+          if(limitCounter>=70)break;
+
+          ready=true;
+
+          for(let i=0;i<6;i++){
+
+            limitCounter++;
+
+            const imgResponse = await fetch(imgsProdia[i],{});
+
+            if(imgResponse.status===200){
+            imgs[i]=imgsProdia[i];
+            setImages(imgs);
+            setImgStyle({cursor:"zoom-in"}) 
+          } else {ready=false;
+          
+            if(limitCounter>=50){
+              const response = await fetch(url,{
+          });
+          if(limitCounter>=70){delete imgs[i]; setImages(imgs);}
+          const result = await response.json();
+          imgsProdia[i]=result;
+  }}}}
+    
+  enableButton();
   };
 
   function closeView(){
