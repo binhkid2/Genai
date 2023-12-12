@@ -18,8 +18,8 @@ app.get('/api/text2image', async (req, res) => {
   const prompt = req.query.prompt;
   const style = req.query.style;
   
-  await sdk.sdxlGenerate({
-      model:"realismEngineSDXL_v10.safetensors [af771c3f]",
+  await sdk.generate({
+      model:"sdv1_4.ckpt [7460a6fa]",
       prompt: prompt,
       steps: 30,
       style_preset: style
