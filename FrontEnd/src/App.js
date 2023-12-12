@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Spinner from "./Spinner-1s.svg";
 
+
 function App() {
 
   const [data, setData] = useState(null);
@@ -12,6 +13,7 @@ function App() {
   const [viewObj, setObj] = useState("");
   const [bodyStyle, setStyle] = useState({});
   const [imgStyle, setImgStyle] = useState({});
+  const [presetStyle, setPresetStyle] = useState("");
 
   function disableButton(){
 
@@ -30,6 +32,11 @@ function App() {
 
   }
 
+  function hanldePresetStyle(event){
+
+    setPresetStyle(event.target.value);
+  }
+
   async function handleClick(event){
     disableButton();
     setObj("");
@@ -42,7 +49,7 @@ function App() {
 
   const fetchData = async () => {
 
-    const url = process.env.REACT_APP_URL + prompt;
+    const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle ;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     let limitCounter = 0;
@@ -109,8 +116,39 @@ function App() {
      <main style={bodyStyle}>
      <h1>Genai</h1>
       <form>
+      <div className='inputs'>
       <input onChange={handleChange} placeholder='Type Description' value={input}></input>
-      <button onClick={handleClick} type='submit' disabled={isDisabled}>generate</button></form>
+      <button onClick={handleClick} type='submit' disabled={isDisabled}>generate</button>
+      </div>
+      
+      <div className='preset'>
+      <label> Style : </label>
+      <select onChange={hanldePresetStyle} value={presetStyle}>
+        <option value="3d-model">3d-model</option>
+        <option value="analog-film">analog-film</option>
+        <option value="anime">anime</option>
+        <option value="cinematic">cinematic</option>
+
+        <option value="comic-book">comic-book</option>
+        <option value="digital-art">digital-art</option>
+        <option value="enhance">enhance</option>
+        <option value="fantasy-art">fantasy-art</option>
+
+        <option value="isometric">isometric</option>
+        <option value="line-art">line-art</option>
+        <option value="low-poly">low-poly</option>
+        <option value="neon-punk">neon-punk</option>
+
+        <option value="origami">origami</option>
+        <option value="photographic">photographic</option>
+        <option value="pixel-art">pixel-art</option>
+        <option value="texture">texture</option>
+
+        <option value="craft-clay">craft-clay</option>
+
+      </select></div>
+      </form>
+      
     <div className='imgs'>
     {images.map(e=>{
 
