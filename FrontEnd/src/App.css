@@ -105,10 +105,10 @@ input{
 
 label{
   
-  font-weight: 900;
+  font-weight: 500;
   font-size: 1.2em;
-  letter-spacing: 4px !important;
-  color:#ffffff !important;
+  color:#ffffffcb !important;
+  letter-spacing: 5px !important;
 }
 
 select{
