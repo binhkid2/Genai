@@ -17,8 +17,8 @@ app.get('/api/text2image', async (req, res) => {
   var url="";
   const prompt = req.query.prompt;
   const style = req.query.style;
-  
-  await sdk.sdxlGenerate({
+
+  await sdk.generate({
       prompt: prompt,
       steps: 30,
       style_preset: style
