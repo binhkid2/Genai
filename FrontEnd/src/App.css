@@ -176,6 +176,9 @@ border-radius: 20px;
     gap: 3ch;
     margin-bottom: 4ch;
   }
+  .inputs{
+    gap: 1.3ch;  
+  }
   input{
 
     font-size: 0.8em;
@@ -215,8 +218,11 @@ border-radius: 20px;
     font-size:4em;
   }
   form{
-    gap: 2ch;
+    gap: 3ch;
     margin-bottom: 3ch;
+  }
+  .inputs{
+    gap: 1.1ch;  
   }
   input{
 
@@ -260,7 +266,7 @@ border-radius: 20px;
   .view{
     width: 46% !important;
     left: 25% !important;
-    top: 9ch !important;
+    top: 4ch !important;
   }
 
 }
