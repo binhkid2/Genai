@@ -13,7 +13,7 @@ function App() {
   const [viewObj, setObj] = useState("");
   const [bodyStyle, setStyle] = useState({});
   const [imgStyle, setImgStyle] = useState({});
-  const [presetStyle, setPresetStyle] = useState("");
+  const [presetStyle, setPresetStyle] = useState("3d-model");
 
   function disableButton(){
 
