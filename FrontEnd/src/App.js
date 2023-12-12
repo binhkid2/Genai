@@ -84,11 +84,14 @@ function App() {
           
             if(limitCounter>=50){
               const response = await fetch(url,{
+                
           });
-          if(limitCounter>=70){delete imgs[i]; setImages(imgs);}
           const result = await response.json();
           imgsProdia[i]=result;
-  }}}}
+        }
+        if(limitCounter>=70){delete imgs[i]; setImages(imgs);}
+
+  }}}
     
   enableButton();
   };
