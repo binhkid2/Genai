@@ -125,7 +125,7 @@ function App() {
       </div>
       
       <div className='preset'>
-      <label> Style : </label>
+      
       <select onChange={hanldePresetStyle} value={presetStyle}>
         <option value="3d-model">3d-model</option>
         <option value="analog-film">analog-film</option>
