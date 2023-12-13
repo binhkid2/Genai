@@ -66,7 +66,7 @@ function App() {
 
         while(!ready){
 
-          if(limitCounter>=70)break;
+          if(limitCounter>=50)break;
 
           ready=true;
 
@@ -82,14 +82,14 @@ function App() {
             setImgStyle({cursor:"zoom-in"}) 
           } else {ready=false;
           
-            if(limitCounter>=50){
+            if(limitCounter>=30){
               const response = await fetch(url,{
                 
           });
           const result = await response.json();
           imgsProdia[i]=result;
         }
-        if(limitCounter>=70){delete imgs[i]; setImages(imgs);}
+        if(limitCounter>=50){delete imgs[i]; setImages(imgs);}
 
   }}}
     
