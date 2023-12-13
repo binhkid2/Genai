@@ -21,7 +21,9 @@ app.get('/api/text2image', async (req, res) => {
   await sdk.sdxlGenerate({
       model:"juggernautXL_v45.safetensors [e75f5471]",
       prompt: prompt,
-      steps: 25,
+      steps: 30, 
+      cfg_scale: 3.5,
+      seed: 1286079241,
       style_preset: style
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
