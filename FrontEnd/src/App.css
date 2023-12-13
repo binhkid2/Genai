@@ -1,11 +1,8 @@
 body{
 
-  height:145vh !important;
+  height:auto !important;
   background: linear-gradient(to bottom, #2ecc71, #3498db);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  
 }
 
 img{
