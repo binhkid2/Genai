@@ -13,7 +13,7 @@ function App() {
   const [viewObj, setObj] = useState("");
   const [bodyStyle, setStyle] = useState({});
   const [imgStyle, setImgStyle] = useState({});
-  const [presetStyle, setPresetStyle] = useState("");
+  const [presetStyle, setPresetStyle] = useState("3d-model");
 
   function disableButton(){
 
@@ -128,7 +128,7 @@ function App() {
       
       <select onChange={hanldePresetStyle} value={presetStyle}>
 
-        <option value="">default-style</option>
+      <option value="3d-model">3d-model</option>
 
         <option value="3d-model">3d-model</option>
         <option value="analog-film">analog-film</option>
