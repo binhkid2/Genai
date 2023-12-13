@@ -19,7 +19,7 @@ app.get('/api/text2image', async (req, res) => {
   const style = req.query.style;
   
   await sdk.generate({
-      model:"analog-diffusion-1.0.ckpt [9ca13f02]",
+      model:"EimisAnimeDiffusion_V1.ckpt [4f828a15]",
       prompt: prompt,
       steps: 30,
       style_preset: style
