@@ -19,10 +19,8 @@ app.get('/api/text2image', async (req, res) => {
   const style = req.query.style;
   
   await sdk.sdxlGenerate({
-      model:"dynavisionXL_0411.safetensors [c39cc051]",
       prompt: prompt,
-      steps: 30, 
-      cfg_scale: 10,
+      steps: 30,
       style_preset: style
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
