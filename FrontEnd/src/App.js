@@ -66,7 +66,7 @@ function App() {
 
         while(!ready){
 
-          if(limitCounter>=50)break;
+          if(limitCounter>=55)break;
 
           ready=true;
 
