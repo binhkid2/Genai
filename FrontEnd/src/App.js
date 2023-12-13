@@ -51,15 +51,15 @@ function App() {
 
     const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle ;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
-    const imgsProdia = [];
+    const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     let limitCounter = 0;
 
-    for(let i=0;i<10;i++){
+    for(let i=0;i<6;i++){
       
         const response = await fetch(url,{
         });
         const result = await response.json();
-        imgsProdia.push(result);
+        imgsProdia[i]=result;
       }
         
       let ready = false;
@@ -70,17 +70,16 @@ function App() {
 
           ready=true;
 
-          for(let i=0;i<10;i++){
+          for(let i=0;i<6;i++){
 
             limitCounter++;
 
             const imgResponse = await fetch(imgsProdia[i],{});
 
             if(imgResponse.status===200){
-            imgs[i%6]=imgsProdia[i];
+            imgs[i]=imgsProdia[i];
             setImages(imgs);
-            setImgStyle({cursor:"zoom-in"});
-            imgsProdia[i]=""; 
+            setImgStyle({cursor:"zoom-in"}) 
           } else {ready=false;
           
             if(limitCounter>=30){
