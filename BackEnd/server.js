@@ -20,7 +20,7 @@ app.get('/api/text2image', async (req, res) => {
   
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
-      steps: 5,
+      steps: 50,
       style_preset: style
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
