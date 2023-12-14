@@ -159,7 +159,8 @@ button:hover{
   background-color: rgb(153, 11, 11);
   border-radius: 40px;
   font-weight: 400;
-  margin-top: 0.25ch;
+  position: relative;
+  bottom: 0;
   padding: 1.1ch !important;
   padding-left: 1.5ch !important;
   padding-right: 1.5ch !important;
