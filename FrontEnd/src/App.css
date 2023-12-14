@@ -102,7 +102,7 @@ input{
   width: 90% !important;
   justify-content: center;
   width: 100px;
-  gap: 1ch;
+  gap: 0.7ch;
 }
 
 label{
