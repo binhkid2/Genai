@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Spinner from "./Spinner-1s.svg";
 
+var abort = false;
+
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
   const [bodyStyle, setStyle] = useState({});
   const [imgStyle, setImgStyle] = useState({});
   const [presetStyle, setPresetStyle] = useState("");
+
 
   function disableButton(){
 
@@ -52,10 +55,13 @@ function App() {
     const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle ;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
+
     let limitCounter = 0;
 
     for(let i=0;i<6;i++){
       
+        if(abort)break;
+
         const response = await fetch(url,{
         });
         const result = await response.json();
@@ -64,13 +70,15 @@ function App() {
         
       let ready = false;
 
-        while(!ready){
+        while(!ready && !abort){
 
           if(limitCounter>=65)break;
 
           ready=true;
 
           for(let i=0;i<6;i++){
+
+            if(abort)break;
 
             limitCounter++;
 
@@ -82,18 +90,27 @@ function App() {
             setImgStyle({cursor:"zoom-in"}) 
           } else {ready=false;
           
-            if(limitCounter>=30){
+            if(limitCounter>=30 && !abort){
               const response = await fetch(url,{
                 
           });
           const result = await response.json();
           imgsProdia[i]=result;
         }
-        if(limitCounter>=55){delete imgs[i]; setImages(imgs);}
+        if(limitCounter>=55 && !abort){delete imgs[i]; setImages(imgs);}
 
   }}}
-    
+
+  if(abort){
+
+    for(let i=0;i<6;i++){
+      if(imgs[i]===Spinner)delete imgs[i];
+    }
+    setImages(imgs);
+  }
+
   enableButton();
+  abort = false;
   };
 
   function closeView(){
@@ -113,6 +130,12 @@ function App() {
 
   }
 
+  function cancelFetching(event){
+
+    event.preventDefault();
+    abort=true;
+  }  
+ 
   return (
     <div onClick={() => viewObj!="" && closeView()} className="app">
     <link href="https://fonts.cdnfonts.com/css/crazy-robot" rel="stylesheet"></link>
@@ -123,9 +146,9 @@ function App() {
       <input onChange={handleChange} placeholder='Type Description' value={input}></input>
       <button onClick={handleClick} type='submit' disabled={isDisabled}>generate</button>
       </div>
-      
+
       <div className='preset'>
-      
+
       <select onChange={hanldePresetStyle} value={presetStyle}>
 
         <option value="">default</option>
@@ -152,7 +175,9 @@ function App() {
 
         <option value="craft-clay">craft-clay</option>
 
-      </select></div>
+      </select>
+      {isDisabled && <button className='cancel' onClick={cancelFetching}>cancel</button> }
+      </div>
       </form>
       
     <div className='imgs'>

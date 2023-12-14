@@ -1,5 +1,6 @@
 body{
 
+  width: 100%;
   height:145vh !important;
   background: linear-gradient(to bottom, #2ecc71, #3498db);
   -webkit-background-size: cover;
@@ -68,6 +69,7 @@ form{
   align-items: center;
   margin-bottom: 5ch;
   gap: 4ch;
+  width: max-content;
 }
 
 .inputs{
@@ -100,7 +102,7 @@ input{
   width: 90% !important;
   justify-content: center;
   width: 100px;
-  gap: 1%;
+  gap: 1ch;
 }
 
 label{
@@ -149,6 +151,21 @@ button:hover{
 
   background-color: black;
 
+}
+
+.cancel{
+
+  color: white !important;
+  background-color: rgb(153, 11, 11);
+  border-radius: 40px;
+  font-weight: 600;
+  margin-top: 0.25ch;
+  padding: 1.1ch !important;
+  padding-left: 1.5ch !important;
+  padding-right: 1.5ch !important;
+  border-radius: 12px !important;
+  width:max-content;
+  height: min-content;
 }
 
 .imgs{
