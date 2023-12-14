@@ -164,7 +164,7 @@ button:hover{
   padding: 0.9ch !important;
   padding-left: 1.5ch !important;
   padding-right: 1.5ch !important;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   width:max-content;
   height: min-content;
 }
