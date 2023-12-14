@@ -161,7 +161,7 @@ button:hover{
   font-weight: 400;
   position: relative;
   bottom: 0;
-  top: 1ch;
+  top: 0.5ch;
   padding: 0.9ch !important;
   padding-left: 1.5ch !important;
   padding-right: 1.5ch !important;
