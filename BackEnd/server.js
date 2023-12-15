@@ -19,14 +19,12 @@ app.get('/api/text2image', async (req, res) => {
   const style = req.query.style;
   
   if(style.length>0)await sdk.sdxlGenerate({
-      model:"juggernautXL_v45.safetensors [e75f5471]",
       prompt: prompt,
       style_preset: style
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
       .catch(err => console.error(err));
   else await sdk.sdxlGenerate({
-    model:"juggernautXL_v45.safetensors [e75f5471]",
     prompt: prompt,
   })
     .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
