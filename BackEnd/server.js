@@ -21,13 +21,13 @@ app.get('/api/text2image', async (req, res) => {
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
       style_preset: style,
-      model:"dynavisionXL_0411.safetensors [c39cc051]"
+      model:"juggernautXL_v45.safetensors [e75f5471]"
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
       .catch(err => console.error(err));
   else await sdk.sdxlGenerate({
     prompt: prompt,
-    model:"dynavisionXL_0411.safetensors [c39cc051]"
+    model:"juggernautXL_v45.safetensors [e75f5471]"
   })
     .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
     .catch(err => console.error(err));    
