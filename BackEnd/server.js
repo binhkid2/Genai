@@ -21,11 +21,13 @@ app.get('/api/text2image', async (req, res) => {
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
       style_preset: style,
+      seed : 1075943719
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
       .catch(err => console.error(err));
   else await sdk.sdxlGenerate({
     prompt: prompt,
+    seed : 1075943719
   })
     .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
     .catch(err => console.error(err));    
