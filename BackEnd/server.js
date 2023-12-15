@@ -18,14 +18,16 @@ app.get('/api/text2image', async (req, res) => {
   const prompt = req.query.prompt;
   const style = req.query.style;
   
-  if(style.length>0)await sdk.sdxlGenerate({
+  if(style.length>0)await sdk.generate({
       prompt: prompt,
       style_preset: style,
+      model:"Realistic_Vision_V5.0.safetensors [614d1063]"
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
       .catch(err => console.error(err));
-  else await sdk.sdxlGenerate({
+  else await sdk.generate({
     prompt: prompt,
+    model:"Realistic_Vision_V5.0.safetensors [614d1063]"
   })
     .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
     .catch(err => console.error(err));    
