@@ -18,7 +18,7 @@ app.get('/api/text2image', async (req, res) => {
   const prompt = req.query.prompt;
   const style = req.query.style;
   
-  if(style.length>0)await generate({
+  if(style.length>0)await sdk.generate({
       prompt: prompt,
       style_preset: style
     })
