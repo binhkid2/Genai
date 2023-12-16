@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const sdk = require('api')('@prodia/v1.3.0#75jxacplowzes24');
+const fetch = require('node-fetch');
 require('dotenv').config();
 
 const app = express();
@@ -9,15 +10,44 @@ const port = 3001;
 
 app.use(cors());
 
-sdk.auth(process.env.API_KEY);
+async function translateText(text, targetLanguage) {
+  const apiUrl = 'https://libretranslate.com/translate';
 
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        q: text,
+        target: targetLanguage,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Translation request failed with status ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result.translatedText;
+  } catch (error) {
+    console.error('Error translating text:', error.message);
+    return text;
+  }
+}
+
+sdk.auth(process.env.API_KEY);
 
 app.get('/api/text2image', async (req, res) => {
   
   var url="";
-  const prompt = req.query.prompt;
+  var prompt = req.query.prompt;
   const style = req.query.style;
+  const targetLanguage = 'en';  
   
+  prompt = translateText(prompt, targetLanguage);
+
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
       style_preset: style,
