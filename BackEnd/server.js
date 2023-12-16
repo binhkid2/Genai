@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const sdk = require('api')('@prodia/v1.3.0#75jxacplowzes24');
-import fetch from ('node-fetch');
+const fetch = require("node-fetch");
 require('dotenv').config();
 
 const app = express();
