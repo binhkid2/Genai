@@ -17,7 +17,6 @@ function App() {
   const [imgStyle, setImgStyle] = useState({});
   const [presetStyle, setPresetStyle] = useState("");
 
-
   function disableButton(){
 
     setButton(true);
@@ -52,7 +51,16 @@ function App() {
 
   const fetchData = async () => {
 
-    const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle ;
+    const model = [
+      "dreamshaperXL10_alpha2.safetensors [c8afe2ef]",
+      "dynavisionXL_0411.safetensors [c39cc051]",
+      "juggernautXL_v45.safetensors [e75f5471]",
+      "realismEngineSDXL_v10.safetensors [af771c3f]",
+      "juggernautXL_v45.safetensors [e75f5471]",
+      "dreamshaperXL10_alpha2.safetensors [c8afe2ef]"
+    ];
+
+    const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
 
@@ -62,7 +70,7 @@ function App() {
       
         if(abort)break;
 
-        const response = await fetch(url,{
+        const response = await fetch(url + "&model=" + model[i] ,{
         });
         const result = await response.json();
         imgsProdia[i]=result;
@@ -91,7 +99,7 @@ function App() {
           } else {ready=false;
            
             if(limitCounter>=40 && !abort){
-              const response = await fetch(url,{
+              const response = await fetch(url + "&model=" + model[i] ,{
                 
           });
           const result = await response.json();
