@@ -43,8 +43,19 @@ function App() {
 
   function handleReslution(event){
 
-    setReslution(event.target.value);
-    console.log(event.target.value);
+    const dimensions=event.target.value
+    var width="";
+    var height="";
+    var detected = false;
+    for(let i=0;i<dimensions.length;i++){
+
+      if(dimensions[i]===','){detected=true; continue;}
+
+      if(!detected)width+=dimensions[i]; 
+      else height+=dimensions[i];
+
+    }
+    setReslution([+width,+height])  
   }
 
   async function handleClick(event){
