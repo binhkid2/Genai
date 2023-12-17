@@ -194,7 +194,7 @@ function App() {
 
       </select>
 
-      <select onChange={handleReslution} value={resultion}>
+      {/* <select onChange={handleReslution} value={resultion}>
 
         <option value={[1024,1024]}>1024x1024</option>
         <option value={[1152,896]}>1152x896</option>
@@ -205,7 +205,7 @@ function App() {
         <option value={[768,1344]}>768x1344</option>
         <option value={[832,1216]}>832x1216</option>
       
-      </select>
+      </select> */}
 
       {isDisabled && <button className='cancel' onClick={cancelFetching}>cancel</button> }
 
