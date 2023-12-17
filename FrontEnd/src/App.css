@@ -178,7 +178,7 @@ button:hover{
 
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 3ch;
+  gap: 3vw;
   max-width: 100%; /* Adjust the maximum width as needed */
   max-height: 50vh; /* Adjust the maximum height as needed */
   margin-bottom: 40%;
