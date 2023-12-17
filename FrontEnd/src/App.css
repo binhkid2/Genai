@@ -184,12 +184,11 @@ button:hover{
   margin-bottom: 40%;
 }
 
-
 img{
 
 width: 100%;
 border-radius: 7%;
-min-width: 10vw;
+min-width: 20vw;
 min-height: 10vh;
 max-width: 20vw; /* Adjust the maximum width as needed */
 max-height: 50vh; /* Adjust the maximum height as needed */
