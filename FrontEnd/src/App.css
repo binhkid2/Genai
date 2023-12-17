@@ -179,7 +179,6 @@ button:hover{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 3ch;
-  width: max-content;
   max-width: 100%; /* Adjust the maximum width as needed */
   max-height: 50vh; /* Adjust the maximum height as needed */
   margin-bottom: 40%;
@@ -189,9 +188,10 @@ button:hover{
 img{
 
 width: 100%;
-border: rgba(255, 255, 255, 0.349) solid 2px;
 border-radius: 7%;
-max-width: 30vw; /* Adjust the maximum width as needed */
+min-width: 5vw; /* Adjust the maximum width as needed */
+min-height: 10vh;
+max-width: 20vw; /* Adjust the maximum width as needed */
 max-height: 50vh; /* Adjust the maximum height as needed */
 object-fit: contain;
 }
