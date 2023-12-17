@@ -17,8 +17,8 @@ app.get('/api/text2image', async (req, res) => {
   var url="";
   const prompt = req.query.prompt;
   const style = req.query.style;
-  const width = req.query.width;
-  const height = req.query.height;
+  const width = +req.query.width;
+  const height = +req.query.height;
   
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
