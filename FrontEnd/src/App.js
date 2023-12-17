@@ -16,6 +16,7 @@ function App() {
   const [bodyStyle, setStyle] = useState({});
   const [imgStyle, setImgStyle] = useState({});
   const [presetStyle, setPresetStyle] = useState("");
+  const [resultion, setReslution] = useState([1024,1024]);
 
 
   function disableButton(){
@@ -40,6 +41,12 @@ function App() {
     setPresetStyle(event.target.value);
   }
 
+  function handleReslution(event){
+
+    setReslution(event.target.value);
+    console.log(event.target.value);
+  }
+
   async function handleClick(event){
     disableButton();
     setObj("");
@@ -52,10 +59,9 @@ function App() {
 
   const fetchData = async () => {
 
-    const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle ;
+    const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle + "&width=" + resultion[0] + "&height=" + resultion[1] ;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
-
     let limitCounter = 0;
 
     for(let i=0;i<6;i++){
@@ -176,7 +182,22 @@ function App() {
         <option value="craft-clay">craft-clay</option>
 
       </select>
+
+      <select onChange={handleReslution} value={resultion}>
+
+        <option value={[1024,1024]}>1024x1024</option>
+        <option value={[1152,896]}>1152x896</option>
+        <option value={[1216,832]}>1216x832</option>
+        <option value={[1344,768]}>1344x768</option>
+        <option value={[1536,640]}>1536x640</option>
+        <option value={[640,1536]}>640x1536</option>
+        <option value={[768,1344]}>768x1344</option>
+        <option value={[832,1216]}>832x1216</option>
+      
+      </select>
+
       {isDisabled && <button className='cancel' onClick={cancelFetching}>cancel</button> }
+
       </div>
       </form>
       
