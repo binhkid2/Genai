@@ -16,7 +16,7 @@ async function checkUrlStatus(url) {
   var response = {data:{status:""}};
 
   try {
-    response = await axios.get(url, { timeout: 4000 });
+    response = await axios.get(url);
     return response.data.status;
   } catch (error) {
     if (error.response) {
