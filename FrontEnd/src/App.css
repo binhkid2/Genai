@@ -187,7 +187,7 @@ button:hover{
 img{
 
 width: 100%;
-border-radius: 3vw;
+border-radius: 2vw;
 min-width: 20vw;
 min-height: 10vh;
 max-width: 30vw; /* Adjust the maximum width as needed */
