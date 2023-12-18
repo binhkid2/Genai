@@ -1,9 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Spinner from "./Spinner-1s.svg";
 
 var abort = false;
-
+var DetectLanguage = require('detectlanguage');
+var detectlanguage = new DetectLanguage("9d8788a1ea7c0812f593cbe576ee6b22");
 
 function App() {
 
@@ -18,6 +20,29 @@ function App() {
   const [presetStyle, setPresetStyle] = useState("");
   const [resultion, setReslution] = useState([1024,1024]);
 
+  const translateText = async () => {
+
+    var result;
+    axios.post(`https://libretranslate.de/detect`, {
+      q: prompt
+  })
+  .then(async (response) => {
+      result=response.data[0].language;
+      try {
+        let data = {
+          q : prompt,
+          source: result,
+          target: "en"
+      }
+      axios.post(`https://libretranslate.de/translate`, data)
+      .then((response) => {
+          fetchData(response.data.translatedText);
+      })
+      } catch (error) {
+        console.error('Translation error:', error);
+      }
+  })
+  };
 
   function disableButton(){
 
@@ -58,22 +83,23 @@ function App() {
     setReslution([width,height])  
   }
 
-  async function handleClick(event){
+  async function handleClick(event){    
     disableButton();
     setObj("");
     setImgStyle({});
     event.preventDefault();
     setData(Spinner);
     setImages([Spinner,Spinner,Spinner,Spinner,Spinner,Spinner]);
-    fetchData();
+    translateText();
   }
 
-  const fetchData = async () => {
+  const fetchData = async (adaptedPrompt) => {
 
-    const url = process.env.REACT_APP_URL + prompt + "&style=" + presetStyle + "&width=" + resultion[0] + "&height=" + resultion[1] ;
+    const url = process.env.REACT_APP_URL + adaptedPrompt + "&style=" + presetStyle + "&width=" + resultion[0] + "&height=" + resultion[1] ;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     let limitCounter = 0;
+
     for(let i=0;i<6;i++){
       
         if(abort)break;
