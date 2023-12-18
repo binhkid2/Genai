@@ -71,7 +71,7 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5ch;
+  margin-bottom: 3vw;
   gap: 4ch;
   width: max-content;
 }
