@@ -74,7 +74,6 @@ function App() {
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     let limitCounter = 0;
-    console.log(url);
     for(let i=0;i<6;i++){
       
         if(abort)break;
