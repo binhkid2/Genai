@@ -1,17 +1,20 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Filter from 'bad-words';
 import Spinner from "./Spinner-1s.svg";
 
 var abort = false;
 var DetectLanguage = require('detectlanguage');
 var detectlanguage = new DetectLanguage("9d8788a1ea7c0812f593cbe576ee6b22");
+const filter = new Filter({ placeHolder: ' '});
+filter.addWords('naked','nude',"hot");
 
 function App() {
 
   const [data, setData] = useState(null);
   const [input, setInput] = useState(null);
-  const [prompt, setPrompt] = useState(null);
+  const [prompt, setPrompt] = useState("Enter a prompt");
   const [images, setImages] = useState([]);
   const [isDisabled, setButton] = useState(false);  
   const [viewObj, setObj] = useState("");
@@ -37,7 +40,8 @@ function App() {
       }
       axios.post(`https://libretranslate.de/translate`, data)
       .then((response) => {
-          fetchData(response.data.translatedText);
+          const filteredText = filter.clean(response.data.translatedText);
+          fetchData(filteredText);
       })
       } catch (error) {
         console.error('Translation error:', error);
@@ -105,7 +109,6 @@ function App() {
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     let limitCounter = 0;
-    console.log(url);
     for(let i=0;i<6;i++){
       
         if(abort)break;
