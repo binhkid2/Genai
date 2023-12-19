@@ -12,8 +12,8 @@ app.use(cors());
 sdk.auth(process.env.API_KEY);
 
 function generateRandomNumber() {
-  const min = 1000000;
-  const max = 10000000;
+  const min = 10000000;
+  const max = 100000000;
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomNumber;
 }
