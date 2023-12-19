@@ -19,6 +19,7 @@ function App() {
   const [imgStyle, setImgStyle] = useState({});
   const [presetStyle, setPresetStyle] = useState("");
   const [resultion, setReslution] = useState([1024,1024]);
+  const [model, setModel] = useState("sd_xl_base_1.0.safetensors [be9edd61]");
 
   const translateText = async () => {
 
@@ -83,6 +84,11 @@ function App() {
     setReslution([width,height])  
   }
 
+  function handleModel(event){
+
+    setModel(event.target.value);
+  }
+
   async function handleClick(event){    
     disableButton();
     setObj("");
@@ -95,11 +101,11 @@ function App() {
 
   const fetchData = async (adaptedPrompt) => {
 
-    const url = process.env.REACT_APP_URL + adaptedPrompt + "&style=" + presetStyle + "&width=" + resultion[0] + "&height=" + resultion[1] ;
+    const url = process.env.REACT_APP_URL + adaptedPrompt + "&style=" + presetStyle + "&width=" + resultion[0] + "&height=" + resultion[1] + "&model=" + model ;
     const imgs = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     const imgsProdia = [Spinner,Spinner,Spinner,Spinner,Spinner,Spinner];
     let limitCounter = 0;
-
+    console.log(url);
     for(let i=0;i<6;i++){
       
         if(abort)break;
@@ -231,6 +237,17 @@ function App() {
         <option value={[832,1216]}>832x1216</option>
       
       </select>
+      
+      <select onChange={handleModel} value={model}>
+
+        <option value="sd_xl_base_1.0.safetensors [be9edd61]">sd_xl_base_1.0</option>
+        <option value="dreamshaperXL10_alpha2.safetensors [c8afe2ef]">dreamshaperXL10_alpha2</option>
+        <option value="dynavisionXL_0411.safetensors [c39cc051]">dynavisionXL_0411</option>
+        <option value="juggernautXL_v45.safetensors [e75f5471]">juggernautXL_v45</option>
+        <option value="realismEngineSDXL_v10.safetensors [af771c3f]">realismEngineSDXL_v10</option>
+
+      </select>
+
 
       {isDisabled && <button className='cancel' onClick={cancelFetching}>cancel</button> }
 
