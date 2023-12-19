@@ -11,6 +11,12 @@ app.use(cors());
 
 sdk.auth(process.env.API_KEY);
 
+function generateRandomNumber() {
+  const min = 1000000;
+  const max = 10000000;
+  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  return randomNumber;
+}
 
 app.get('/api/text2image', async (req, res) => {
   
@@ -20,6 +26,7 @@ app.get('/api/text2image', async (req, res) => {
   const width = +req.query.width;
   const height = +req.query.height;
   const model = req.query.model;
+  const seed = generateRandomNumber();
 
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
@@ -28,6 +35,7 @@ app.get('/api/text2image', async (req, res) => {
       steps: 30,
       width: width,
       height: height,
+      seed: seed
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
       .catch(err => console.error(err));
@@ -37,6 +45,7 @@ app.get('/api/text2image', async (req, res) => {
     steps: 30,
     width: width,
     height: height,
+    seed: seed
   })
     .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
     .catch(err => console.error(err));    
