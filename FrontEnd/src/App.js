@@ -243,11 +243,11 @@ function App() {
       
       <select onChange={handleModel} value={model}>
 
-        <option value="sd_xl_base_1.0.safetensors [be9edd61]">sd_xl_base_1.0</option>
-        <option value="dreamshaperXL10_alpha2.safetensors [c8afe2ef]">dreamshaperXL10_alpha2</option>
-        <option value="dynavisionXL_0411.safetensors [c39cc051]">dynavisionXL_0411</option>
-        <option value="juggernautXL_v45.safetensors [e75f5471]">juggernautXL_v45</option>
-        <option value="realismEngineSDXL_v10.safetensors [af771c3f]">realismEngineSDXL_v10</option>
+        <option value="sd_xl_base_1.0.safetensors [be9edd61]">sdxl_base</option>
+        <option value="dreamshaperXL10_alpha2.safetensors [c8afe2ef]">dreamshaperXL</option>
+        <option value="dynavisionXL_0411.safetensors [c39cc051]">dynavisionXL</option>
+        <option value="juggernautXL_v45.safetensors [e75f5471]">juggernautXL</option>
+        <option value="realismEngineSDXL_v10.safetensors [af771c3f]">realismEngineSDXL</option>
 
       </select>
 
