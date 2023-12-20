@@ -29,7 +29,7 @@ app.get('/api/text2image', async (req, res) => {
   const seed = generateRandomNumber();
 
   visitors++;
-  console.log(visitors);
+  console.log(visitors/6);
 
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
