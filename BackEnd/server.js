@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 const port = 3001;
-
+var visitors = 0;
 app.use(cors());
 
 sdk.auth(process.env.API_KEY);
@@ -27,6 +27,9 @@ app.get('/api/text2image', async (req, res) => {
   const height = +req.query.height;
   const model = req.query.model;
   const seed = generateRandomNumber();
+
+  visitors++;
+  console.log(visitors);
 
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
