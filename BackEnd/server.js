@@ -38,7 +38,7 @@ app.get('/api/text2image', async (req, res) => {
       seed: seed
     })
       .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
-      .catch(err => console.error(err));
+      
   else await sdk.sdxlGenerate({
     prompt: prompt,
     model: model,
@@ -48,8 +48,7 @@ app.get('/api/text2image', async (req, res) => {
     seed: seed
   })
     .then(({ data }) =>  url = ("https://images.prodia.xyz/" + data.job + ".png" ))
-    .catch(err => console.error(err));    
- 
+    
   res.json(url)      
   
   if(url!==""){
