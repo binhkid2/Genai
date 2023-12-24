@@ -28,9 +28,6 @@ app.get('/api/text2image', async (req, res) => {
   const model = req.query.model;
   const seed = generateRandomNumber();
 
-  visitors++;
-  console.log(visitors/6);
-
   if(style.length>0)await sdk.sdxlGenerate({
       prompt: prompt,
       style_preset: style,
@@ -54,7 +51,12 @@ app.get('/api/text2image', async (req, res) => {
     .catch(err => console.error(err));    
  
   res.json(url)      
-
+  
+  if(url!==""){
+    visitors++;
+    console.log(visitors/6);
+  
+  }
 });
 
 
