@@ -54,7 +54,7 @@ app.get('/api/text2image', async (req, res) => {
   
   if(url!==""){
     visitors++;
-    console.log(visitors/6);
+    if(visitors%6===0)console.log(visitors/6 + 30);
   
   }
 });
