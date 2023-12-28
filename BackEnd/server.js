@@ -59,8 +59,8 @@ app.get('/api/text2image', async (req, res) => {
 
   if(url!==""){
     visitors++;
-    if(visitors%6===0)console.log(visitors/6 , prompt);
-    console.log(`Visitor's IP address: ${clientIp}`); 
+    if(visitors%6===0){console.log(visitors/6 , prompt);
+    console.log(`Visitor's IP address: ${clientIp}`);} 
 
   }
 });
