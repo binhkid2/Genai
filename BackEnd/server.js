@@ -2,12 +2,15 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const sdk = require('api')('@prodia/v1.3.0#75jxacplowzes24');
+const requestIp = require('request-ip'); 
 require('dotenv').config();
 
 const app = express();
 const port = 3001;
 var visitors = 0;
+
 app.use(cors());
+app.use(requestIp.mw()); 
 
 sdk.auth(process.env.API_KEY);
 
@@ -52,10 +55,13 @@ app.get('/api/text2image', async (req, res) => {
  
   res.json(url)      
   
+  const clientIp = req.clientIp; 
+
   if(url!==""){
     visitors++;
-    if(visitors%6===0)console.log(visitors/6);
-  
+    if(visitors%6===0)console.log(visitors/6 , prompt);
+    console.log(`Visitor's IP address: ${clientIp}`); 
+
   }
 });
 
